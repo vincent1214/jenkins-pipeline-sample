@@ -4,7 +4,7 @@ pipeline {
        stage('Preparation') { 
             agent { node { label 'master' } }
             steps {
-               checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'binbin', url: 'https://github.com/zbbkeepgoing/springboot-demo.git']]])
+               checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/vincent1214/springboot-demo.git']]])
             }
         }
          
@@ -22,7 +22,7 @@ pipeline {
             agent { node { label 'master' } }
             steps {
                 dir(env.WORKSPACE){
-                  sh "mvn sonar:sonar -Dsonar.host.url=http://xxxx:9000 -Dsonar.login=sonarkey"
+                  sh "mvn sonar:sonar -Dsonar.host.url=http://192.168.94.131:9000 -Dsonar.login=6dd30e7510bce0fe00211a4f879107afad30fa36"
                 }
             }
         }
